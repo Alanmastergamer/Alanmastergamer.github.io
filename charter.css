@@ -1,0 +1,218 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Khung lưới màu xanh dương bao quanh 5 khối */
+.charter-container {
+  background-color: #0000ff;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 20px auto;
+}
+
+/* Định vị các khối trên màn hình Desktop */
+.goals {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.team {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.scopes {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.primary {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.timeline {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+}
+
+/* Giao diện chung của từng khối trắng */
+.charter-box {
+  background-color: #f0f8ff;
+  padding: 20px;
+}
+
+.charter-title {
+  color: #0000ff;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+/* Các mục bên trong Goals, Team, Primary */
+.charter-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #dce6f0;
+}
+
+.charter-item.no-border {
+  border-bottom: none;
+}
+
+.charter-icon {
+  font-size: 26px;
+  color: #222;
+  min-width: 35px;
+  text-align: center;
+}
+
+.charter-text h5 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.charter-text p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 0;
+}
+
+/* Khối Scopes (2 cột IN và OUT trên Desktop) */
+.scopes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.scope-col h4 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.scope-col p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+/* Khối Timeline */
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.timeline-number {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #9f88ff;
+  border: 2px solid #666;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.timeline-content {
+  flex: 1;
+  border-bottom: 1px dashed #4dd0e1;
+  padding-bottom: 8px;
+}
+
+.timeline-content h5 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.timeline-content p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   RESPONSIVE CHO TABLET & MOBILE (<= 992px)
+   ========================================================= */
+@media (max-width: 992px) {
+  .charter-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reset vị trí lưới để 5 khối xếp chồng theo 1 cột dọc */
+  .goals,
+  .scopes,
+  .team,
+  .primary,
+  .timeline {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  /* Thứ tự hiển thị chuẩn theo ảnh mẫu: Goals -> Scopes -> Team -> Primary -> Timeline */
+  .goals {
+    order: 1;
+  }
+  .scopes {
+    order: 2;
+  }
+  .team {
+    order: 3;
+  }
+  .primary {
+    order: 4;
+  }
+  .timeline {
+    order: 5;
+  }
+
+  /* Đưa icon ra giữa và nằm phía trên chữ ở Goals, Team, Primary */
+  .charter-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .charter-icon {
+    align-self: center;
+    font-size: 28px;
+  }
+
+  /* Chuyển IN và OUT trong Scopes thành 1 cột dọc */
+  .scopes-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  /* Đưa vòng tròn số thứ tự nằm phía trên nội dung trong Timeline */
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .timeline-content {
+    width: 100%;
+  }
+}
